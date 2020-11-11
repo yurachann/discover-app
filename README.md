@@ -45,8 +45,13 @@
 
 ### Association
 
-- belongs_to :user
-- belongs_to :follow, class_name: 'User'
+- has_many :game_genres
+- has_many :genres, through: games_genres
+- has_many :game_consoles
+- has_many :consoles, through: games_consoles
+- has_many :reviews
+
+
 
 ## genres テーブル
 
