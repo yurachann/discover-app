@@ -1,4 +1,5 @@
 class Genre < ActiveHash::Base
+  include ActiveHash::Associations
   self.data = [
     { id: 1, name: '--' },
     { id: 2, name: 'アクション' },
@@ -14,5 +15,7 @@ class Genre < ActiveHash::Base
   ]
 
   has_many :game_ganres
-  has_many :games, through: :game_ganres
+  def games
+    game_ganres.map(&:game)
+  end
 end

@@ -1,4 +1,5 @@
 class Console < ActiveHash::Base
+  include ActiveHash::Associations
   self.data = [
     { id: 1, name: '--' },
     { id: 2, name: '携帯' },
@@ -9,6 +10,8 @@ class Console < ActiveHash::Base
   ]
 
   has_many :game_consoles
-  has_many :games, through: :game_consoles
+  def games
+    game_consoles.map(&:game)
+  end
 end
 
