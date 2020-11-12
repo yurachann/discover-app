@@ -1,3 +1,46 @@
+# アプリ名
+discover-app
+
+# アプリケーション概要
+ゲームレビューの投稿閲覧を行うアプリ
+自分の付けた評価に似た評価を付けた人や似たジャンルが好きな人のレビューを見付けより自分に合ったゲームを見つける。
+
+# URL
+
+# テスト用アカウント
+
+# 利用方法
+ゲームソフトに紐付けられたレビューを見る。
+ユーザー登録後、したことのあるゲームのレビューを書くことでその評価に近い評価をしたユーザーを見つけることができる。
+
+# 目指した課題解決
+・現状ゲームの評価は不特定多数の総合によってなされている.
+これでは自分に適してないレビューも含まれるため実際の自分の評価とずれることがあった。
+・自分の付けた評価に似た評価を付けた人や似たジャンルが好きな人のレビューを見られればより自分に合ったゲームを見つけられるのではないかと考えた。
+
+
+# 洗い出した要件
+・ゲームレビュー機能
+・uesr管理機能
+・ゲームのジャンル分
+・お気に入り機能
+・ゲーム一覧詳細表示機能
+
+# 実装した機能についてのGIFと説明
+・uesr管理機能
+予想される評価項目に点数を付けられることと詳細なコメント、初心者向けか玄人向けかの判別する。
+・ゲームのジャンル分
+ソフトのデータ保存時にそのジャンルとコンソールを紐づける。
+
+# 実装予定の機能
+・お気に入り機能
+・ゲーム一覧詳細表示機能
+・ゲームレビュー機能
+
+# データベース設計
+
+# ローカルでの動作方法
+
 # テーブル設計
 
 ## users テーブル
@@ -39,14 +82,20 @@
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
 | title      | string     | null: false,                   |
-| catch_copy | string     | null: false,                   |
+| explain    | text       | null: false,                   |
+| price      | integer    | null: false,                   |
 | (image)    |            | null: false,                   |
 | (movie)    |            | null: false,                   |
 
 ### Association
 
-- belongs_to :user
-- belongs_to :follow, class_name: 'User'
+- has_many :game_genres
+- has_many :genres, through: games_genres
+- has_many :game_consoles
+- has_many :consoles, through: games_consoles
+- has_many :reviews
+
+
 
 ## genres テーブル
 
@@ -141,3 +190,4 @@
 
 - belong_to :user
 - belong_to :review
+
