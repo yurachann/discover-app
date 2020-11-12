@@ -1,3 +1,28 @@
 <div class="side-bar">
     <%= render "shared/side_bar" %>
 </div>
+
+<%# 商品一覧 %>
+  <div class='item-contents'>
+    <h2 class='title'>ソフト一覧</h2>
+    <ul class='item-lists'>
+      <% @games.each do |game| %>
+        <li class='list'>
+          <%# <%= link_to game_path(game.id) do %>
+          <div class='item-img-content'>
+            <%= image_tag game.image, class: "item-img" %>
+          </div>
+          <div class='item-info'>
+            <h3 class='item-name'>
+              <%= game.title %>
+            </h3>
+            <div class='item-price'>
+              <span><%= game.price %>円<br>希望価格</span>
+            </div>
+          </div>
+          <%# <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <%# /商品一覧 %>

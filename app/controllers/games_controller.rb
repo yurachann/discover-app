@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   def index
+    @games = Game.all.order('created_at DESC')
   end
 
   def new
@@ -7,7 +8,6 @@ class GamesController < ApplicationController
   end
 
   def create
-    binding.pry
     @game = Game.new(game_params)
     if @game.save
       redirect_to root_path
