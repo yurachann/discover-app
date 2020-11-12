@@ -7,8 +7,9 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = GameForm.new(game_params)
-    if @game.save?
+    binding.pry
+    @game = Game.new(game_params)
+    if @game.save
       redirect_to root_path
     else
       render action: :new
