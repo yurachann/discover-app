@@ -1,4 +1,7 @@
 class GamesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_game, only: [:show]
+
   def index
     @games = Game.all.order('created_at DESC')
   end
@@ -16,10 +19,17 @@ class GamesController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
   def game_params
     params.require(:game).permit(:image, :title, :explain, :price)
+  end
+
+  def set_game
+    @game = Game.find(params[:id])
   end
 
 end

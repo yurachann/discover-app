@@ -1,0 +1,30 @@
+<%= render "shared/header" %>
+
+<%# 商品の概要 %>
+<div class="item-show">
+  <div class="item-box">
+    <h2 class="name">
+      <%= @game.title %>
+    </h2>
+    <div class='item-img-content'>
+      <%= image_tag  @game.image ,class:"item-box-img" %>
+    </div>
+    <div class="item-price-box">
+      <span class="item-price">
+        ¥<%= @game.price %>
+      </span>
+      <span class="item-postage">
+        (税込) 送料込み
+      </span>
+    </div>
+
+    <div class="item-explain-box">
+      <span><%= @game.explain %></span>
+    </div>
+  </div>
+  <%# /商品の概要 %>
+
+  <div class="comment-box">
+  </div>
+</div>
+
